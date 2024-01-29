@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import background from '../../assets/background.jpg';
+import background from '../assets/background.jpg';
 
 interface SignInPageProps {
   // Add any props you might need
@@ -30,8 +30,8 @@ const SignInPage: React.FC<SignInPageProps> = () => {
   };
 
   return (
-    <div className="sign-in-page min-h-screen flex items-center justify-center bg-orange-500">
-      <div className="bg-white p-8 rounded-lg w-96 shadow-lg">
+    <div className="sign-in-page min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+      <div className="bg-orange-500 rounded-lg shadow-lg p-8 m-4">
         <h2 className="text-2xl font-bold mb-4">Sign In</h2>
         {/* Sign In Form */}
         <form onSubmit={handleSignIn}>
@@ -267,7 +267,7 @@ const SignInPage: React.FC<SignInPageProps> = () => {
 
           {/* Username Input */}
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">
+            <label htmlFor="username" className="block text-blue-700 font-semibold mb-2">
               Username:
             </label>
             <input
