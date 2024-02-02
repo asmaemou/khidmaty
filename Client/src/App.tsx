@@ -1,13 +1,17 @@
 import React from 'react';
-import SignInPage from './Components/ReactComponents/SignInPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignIn from './pages/SignUp';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      {/* Render the SignInPage component */}
-      <SignInPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/signup" element={<SignIn />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
