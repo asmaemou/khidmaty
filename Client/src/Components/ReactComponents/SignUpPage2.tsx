@@ -177,28 +177,7 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
               </div>
             </div>
           </div>
-{/* Contact Information Section */}
-<div className="mb-6">
-            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
-              Contact Information
-            </label>
-            <div className="grid grid-cols-2 gap-4">
-              {/* Phone Number Input */}
-              <div>
-                <label htmlFor="phoneNumber" className="block text-gray-700">
-                  Phone Number:
-                </label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+      
           </div>
         )}
 
@@ -225,10 +204,10 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
             </div>
           </div>
 
-          {/* Location and Gender Section */}
+          {/* Location and Section */}
           <div className="mb-6">
             <label htmlFor="location" className="block text-gray-700 font-semibold mb-2">
-              Location and Gender
+              Location
             </label>
             <div className="grid grid-cols-2 gap-4">
               {/* Location Dropdown */}
@@ -249,24 +228,6 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
                       {city}
                     </option>
                   ))}
-                </select>
-              </div>
-              {/* Gender Dropdown */}
-              <div>
-                <label htmlFor="gender" className="block text-gray-700">
-                  Gender:
-                </label>
-                <select
-                  id="gender"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  {/* Add more options as needed */}
                 </select>
               </div>
             </div>
