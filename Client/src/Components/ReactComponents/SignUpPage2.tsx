@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import background from '../assets/background.jpg';
 import logo from '../assets/logo.png';
 
-interface SignUpPage1Props {
+interface SignUpPage2Props {
   // Add any props you might need
 }
 
-const SignUpPage1: React.FC<SignUpPage1Props> = () => {
+const SignUpPage2: React.FC<SignUpPage2Props> = () => {
+  const [userType, setUserType] = useState<'recruiter' | 'company'>('recruiter');
+
+
+  const [companyName, setCompanyName] = useState('');
+  const [companyEmail, setCompanyEmail] = useState('');
+  const [companyLocation, setCompanyLocation] = useState('');
   // State to manage user input
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [cinNumber, setCINNumber] = useState('');
   const [age, setAge] = useState('');
@@ -38,20 +43,55 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
   const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Add logic for authenticating the user with the provided data
-    console.log('Signing in with:', firstName, lastName, email, cinNumber, age, location, phoneNumber, gender, typeOfWork, googleEmail, password, confirmPassword, username,agreed);
-    // You can add authentication logic here (e.g., API calls, Firebase, etc.)
+    console.log(
+      'Signing in with:',
+      userType === 'recruiter'
+        ? { firstName, companyName, email, cinNumber, age, location, phoneNumber, gender, typeOfWork, googleEmail, password, confirmPassword, username, agreed }
+        : { companyName, companyEmail, companyLocation, password, confirmPassword, agreed }
+    );    // You can add authentication logic here (e.g., API calls, Firebase, etc.)
+
+
   };
 
   return (
     <div className="sign-in-page min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
       <div className="absolute top-0 right-0 p-7">
-        <img src={logo} alt="Logo" className="w-28 h-19" /> {/* Adjust width and height as needed */}
+        <img src={logo} alt="Logo" className="w-28 h-19" /> 
       </div>
       <div className="bg-orange-500 rounded-lg shadow-lg p-8 m-4">
         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
+ {/* User Type Selection */}
+ <div className="mb-4">
+        <label className="block text-gray-700 font-semibold mb-2">User Type:</label>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="recruiter"
+            checked={userType === 'recruiter'}
+            onChange={() => setUserType('recruiter')}
+            className="mr-2"
+          />
+          <label htmlFor="recruiter" className="text-gray-700 mr-4">Normal Recruiter</label>
+
+          <input
+            type="checkbox"
+            id="company"
+            checked={userType === 'company'}
+            onChange={() => setUserType('company')}
+            className="mr-2"
+          />
+          <label htmlFor="company" className="text-gray-700">Company</label>
+        </div>
+      </div>
+
+
+
         {/* Sign In Form */}
         <form onSubmit={handleSignUp}>
-          {/* Personal Information Section */}
+            {/* Display recruiter fields if userType is 'recruiter' */}
+            {userType === 'recruiter' && (
+          <div>
+            {/* Personal Information Section */}
           <div className="mb-6">
             <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">
               Personal Information
@@ -73,41 +113,26 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
               </div>
               {/* Last Name Input */}
               <div>
-                <label htmlFor="lastName" className="block text-gray-700">
+                <label htmlFor="companyName" className="block text-gray-700">
                   Last Name:
                 </label>
                 <input
                   type="text"
-                  id="lastName"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  id="companyName"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
                   className="mt-1 p-2 w-full border rounded"
                   required
                 />
               </div>
             </div>
           </div>
-
-          {/* Contact Information Section */}
-          <div className="mb-6">
+{/* Contact Information Section */}
+<div className="mb-6">
             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
               Contact Information
             </label>
             <div className="grid grid-cols-2 gap-4">
-              {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-gray-700">
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                />
-              </div>
               {/* Phone Number Input */}
               <div>
                 <label htmlFor="phoneNumber" className="block text-gray-700">
@@ -124,6 +149,58 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
               </div>
             </div>
           </div>
+          </div>
+        )}
+          
+          {/* Display company fields if userType is 'company' */}
+        {userType === 'company' && (
+          <div>
+           {/* Personal Information Section */}
+          <div className="mb-6">
+            <label htmlFor="CompnayName" className="block text-gray-700 font-semibold mb-2">
+              Personal Information
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              {/* Compnay name */}
+              <div>
+                <label htmlFor="companyName" className="block text-gray-700">
+                  Company Name:
+                </label>
+                <input
+                  type="text"
+                  id="companyName"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+{/* Contact Information Section */}
+<div className="mb-6">
+            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
+              Contact Information
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              {/* Phone Number Input */}
+              <div>
+                <label htmlFor="phoneNumber" className="block text-gray-700">
+                  Phone Number:
+                </label>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          </div>
+        )}
 
           {/* Additional Information Section */}
           <div className="mb-6">
@@ -141,20 +218,6 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
                   id="cinNumber"
                   value={cinNumber}
                   onChange={(e) => setCINNumber(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                />
-              </div>
-              {/* Age Input */}
-              <div>
-                <label htmlFor="age" className="block text-gray-700">
-                  Age:
-                </label>
-                <input
-                  type="text"
-                  id="age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
                   className="mt-1 p-2 w-full border rounded"
                   required
                 />
@@ -209,42 +272,7 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
             </div>
           </div>
 
-          {/* Work Information Section */}
-          <div className="mb-6">
-            <label htmlFor="typeOfWork" className="block text-gray-700 font-semibold mb-2">
-              Work Information
-            </label>
-            <div className="grid grid-cols-2 gap-4">
-              {/* Type of Work Input */}
-              <div>
-                <label htmlFor="typeOfWork" className="block text-gray-700">
-                  Type of Work:
-                </label>
-                <input
-                  type="text"
-                  id="typeOfWork"
-                  value={typeOfWork}
-                  onChange={(e) => setTypeOfWork(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                />
-              </div>
-              {/* Google Email Input */}
-              <div>
-                <label htmlFor="googleEmail" className="block text-gray-700">
-                  Google Email Account:
-                </label>
-                <input
-                  type="email"
-                  id="googleEmail"
-                  value={googleEmail}
-                  onChange={(e) => setGoogleEmail(e.target.value)}
-                  className="mt-1 p-2 w-full border rounded"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+          
 
           {/* Password Section */}
           <div className="mb-6">
@@ -320,4 +348,4 @@ const SignUpPage1: React.FC<SignUpPage1Props> = () => {
   );
 };
 
-export default SignUpPage1;
+export default SignUpPage2;

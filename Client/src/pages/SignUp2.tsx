@@ -1,10 +1,10 @@
 import React from 'react'
-import SignUpPage1 from '../Components/ReactComponents/SignUpPage1'
+import SignUpPage2 from '../Components/ReactComponents/SignUpPage2'
 
 const SignUp: React.FC = () => {
   return (
     <div>
-        <SignUpPage1 />
+        <SignUpPage2 />
     </div>
   )
 }
