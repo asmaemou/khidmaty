@@ -127,6 +127,7 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
               </div>
             </div>
           </div>
+          
 {/* Contact Information Section */}
 <div className="mb-6">
             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
@@ -177,10 +178,31 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
               </div>
             </div>
           </div>
-      
           </div>
         )}
-
+         {/* Contact Information Section */}
+         <div className="mb-6">
+            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
+              Contact Information
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              {/* Email Input */}
+              <div>
+                <label htmlFor="email" className="block text-gray-700">
+                  Company Email:
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1 p-2 w-full border rounded"
+                  required
+                />
+              </div>
+             
+            </div>
+          </div>
           {/* Additional Information Section */}
           <div className="mb-6">
             <label htmlFor="cinNumber" className="block text-gray-700 font-semibold mb-2">
@@ -207,7 +229,7 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
           {/* Location and Section */}
           <div className="mb-6">
             <label htmlFor="location" className="block text-gray-700 font-semibold mb-2">
-              Location
+              Company Location
             </label>
             <div className="grid grid-cols-2 gap-4">
               {/* Location Dropdown */}
