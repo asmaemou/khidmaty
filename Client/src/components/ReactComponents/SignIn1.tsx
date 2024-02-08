@@ -6,12 +6,12 @@ const SignIn1: React.FC = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ background: 'url("https://th.bing.com/th/id/R.f1e6f8a4fd25dc9f48a0b0b562724df3?rik=UJMovnrBoW9itg&pid=ImgRaw&r=0")' }}
+        style={{ backgroundImage: 'url("https://th.bing.com/th/id/R.f1e6f8a4fd25dc9f48a0b0b562724df3?rik=UJMovnrBoW9itg&pid=ImgRaw&r=0")' }}
       />
 
       {/* Orange Rectangle */}
-      <div className="bg-orange-500 p-8 rounded-md shadow-md relative z-10">
-        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">Sign In</h2>
+      <div className="bg-orange-500 p-8 rounded-md shadow-md relative z-10 max-w-md w-full">
+        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">Signing In</h2>
 
         <form className="flex flex-col">
           <div className="mb-4">
