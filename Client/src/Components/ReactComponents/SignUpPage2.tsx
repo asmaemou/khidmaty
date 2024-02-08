@@ -189,7 +189,7 @@ const SignUpPage2: React.FC<SignUpPage2Props> = () => {
               {/* Email Input */}
               <div>
                 <label htmlFor="email" className="block text-gray-700">
-                  Company Email:
+                  Company email:
                 </label>
                 <input
                   type="email"
