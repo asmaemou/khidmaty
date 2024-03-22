@@ -6,6 +6,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
   keyframes: {
     'disappear-appear': {
       '0%': {
@@ -19,4 +22,4 @@ module.exports = {
       },
     },
   },
-}
+};
