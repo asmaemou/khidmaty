@@ -1,8 +1,8 @@
 import React from 'react';
 
 const FooterComp: React.FC = () => (
-  <footer className="bg-orange-500 h-60 flex justify-between items-center px-8">
-    <div className="flex flex-col text-2xl">
+  <footer className="bg-orange-500 h-50 flex justify-between items-center px-8">
+    <div className="flex flex-col text-xl">
       <div className="flex items-center mb-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
