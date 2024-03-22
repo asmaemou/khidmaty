@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignIn from './pages/SignIn';
-import SignUp1 from './pages/SignUp1';
-import SignUp2 from './pages/SignUp2';
-import Home from './pages/Home';
-import About from './pages/About';
+import SignIn from './Pages/SignIn';
+import SignUp1 from './Pages/SignUp1';
+import SignUp2 from './Pages/SignUp2';
+import Home from './Pages/Home';
+import About from './Pages/About';
 
 const App: React.FC = () => {
   return (
