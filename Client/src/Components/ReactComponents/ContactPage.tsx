@@ -1,35 +1,122 @@
-import React from 'react';
-import logon from '../assets/logo.png'
+import React, { useState } from 'react';
 
-export default function ContactPage() {
+interface ContactFormState {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  message: string;
+}
+
+const ContactForm: React.FC = () => {
+  const [formState, setFormState] = useState<ContactFormState>({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    message: '',
+  });
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // Handle the form submission logic here, e.g., sending data to a server
+    console.log(formState);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-        <img src={logon} alt="Logo" className="h-40 w-auto absolute top-0 left-0 ml-4 mt-40" />
+    <div className="flex justify-center p-6">
+      <form onSubmit={handleSubmit} className="w-full max-w-lg bg-orange-600 p-5 rounded">
+        <div className="mb-4">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="firstName">
+            First Name:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="firstName"
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            value={formState.firstName}
+            onChange={handleInputChange}
+            style={{ width: '95%' }} 
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="lastName">
+            Last Name:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="lastName"
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            value={formState.lastName}
+            onChange={handleInputChange}
+            style={{ width: '95%' }} 
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="phoneNumber">
+            Phone Number:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="phoneNumber"
+            type="tel"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            value={formState.phoneNumber}
+            onChange={handleInputChange}
+            style={{ width: '95%' }} 
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
+            Email:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            type="email"
+            placeholder="Email"
+            name="email"
+            value={formState.email}
+            onChange={handleInputChange}
+            style={{ width: '95%' }} 
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="message">
+            Message:
+          </label>
+          <textarea
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="message"
+            placeholder="Enter a message"
+            name="message"
+            value={formState.message}
+            onChange={handleInputChange}
+            style={{ width: '95%' }} 
+          />
+        </div>
+        <div className="flex items-center justify-between">
+        <button
+  className="bg-f6d186 hover:bg-orange-500 text-black border-none font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  type="submit"
+>
 
-      <div className="max-w-6xl mx-auto px-4 py-8 flex-grow">
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-semibold mb-4">Contact Us</h2>
+            Send Message
+          </button>
         </div>
-        <div className="flex justify-center">
-          <div className="w-1/2 p-4 border-4 border-orange-500 rounded-lg">
-            <form className="w-full">
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name:</label>
-                <input type="text" id="name" name="name" className="w-full md:w-auto border-2 border-gray-300 rounded-md p-2" placeholder="Your Name" /> {/* Adjusted width */}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email:</label>
-                <input type="email" id="email" name="email" className="w-full md:w-auto border-2 border-gray-300 rounded-md p-2" placeholder="Your Email" /> {/* Adjusted width */}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message:</label>
-                <textarea id="message" name="message" className="w-full border-2 border-gray-300 rounded-md p-2" placeholder="Your Message"></textarea>
-              </div>
-              <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   );
-}
+};
+
+export default ContactForm;
